@@ -1,7 +1,7 @@
 <?php
 require_once('api_folder.php');
 require_once('import-folder-filter.php');
-require_once(__DIR__ . '/PHPExcel/vendor/autoload.php');
+require_once(__DIR__ . '/vendor/autoload.php');
 
 /////////////////////////////////////////////////
 // config
@@ -58,17 +58,21 @@ $fs_folder = new FS_API_FOLDER($config);
 		if (!empty($param[$idx]['parent']) && !is_numeric($param[$idx]['parent'])) {
 
 			$ret = $fs_folder->queryFolder($param[$idx]['parent']);
-			if ($ret['status']) {
-				$parents = json_decode($ret['msg'], TRUE);
-			}
 
-			$first = array_shift($parents);
-			$param[$idx]['parentID'] = $first['id'];
+			$parents = ($ret['status']) ? json_decode($ret['msg'], TRUE) : array();
+
+			foreach ($parents as $p) {
+				if($p['resType'] == _DIR) {
+					$param[$idx]['parentID'] = $first['id'];
+					break;
+				}
+			}
 
 		}
 	}
 
     $param = array_map('dataFilter', $param);
+
 
 	foreach ($param as $p) {
 		$id = isset($p['id']) ? $p['id'] : 0;

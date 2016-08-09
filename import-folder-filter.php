@@ -27,7 +27,5 @@ function dataFilter($ary) {
 	$ary['uploadComplete'] = 1;
 
 
-	var_dump($ary);
-// die();
 	return $ary;
 }
