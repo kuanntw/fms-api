@@ -17,5 +17,10 @@ class FS_API_FOLDER extends FS_API {
 		return $ret;
 	}
 
+	public function queryFolder($name) {
+		$ret = $this->callApi('webservice', 'queryFolder', array('name' => $name));
+		return $ret;
+	}
+
 
 }
