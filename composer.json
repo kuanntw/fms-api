@@ -1,0 +1,23 @@
+{
+    "name": "kuanntw/fms-api",
+    "description": "FMS API",
+    "keywords": ["FMS","API","EverCam","PowerCam"],
+    "homepage": "http://tw.formosasoft.com",
+    "type": "library",
+    "license": "LGPL-2.1",
+    "authors": [
+        {
+            "name": "Hung, Kuo-En",
+            "homepage": "https://snippetinfo.net"
+        }
+    ],
+    "require": {
+        "php": "^5.3|^7.0",
+        "ext-mbstring": "*",
+        "ext-xml": "*",
+        "ext-xmlwriter": "*"
+    },
+    "require-dev": {
+        "PHPOffice/PHPExcel": "1.8"
+    }
+}
